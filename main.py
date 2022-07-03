@@ -1,5 +1,6 @@
 import requests
 from datetime import datetime
+import time
 
 MY_LAT = 51.412319
 MY_LONG = -0.300440
@@ -36,12 +37,13 @@ def is_night():
     if time_now >= sunset and time_now <=sunrise:
         return True
 
+while True:
+    time.sleep(60)
+    if is_overhead() and is_night():
+        print("QUICKLY LOOK OUTSIDE!!")
 
-if is_overhead() and is_night():
-    print("QUICKLY LOOK OUTSIDE!!")
-
-else:
-    print("There is nothing to see right now")
+    else:
+        print("There is nothing to see right now")
 
 
 
